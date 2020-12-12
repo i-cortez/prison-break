@@ -9,6 +9,8 @@ TagManager:
   - Yellow Token
   - Blue Token
   - Green Token
+  - Tokens
+  - Tokens To Hide
   layers:
   - Default
   - TransparentFX

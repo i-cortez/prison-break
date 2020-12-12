@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BattleState {START, PLAYER1, PLAYER2, PLAYER3, PLAYER4, WARDEN, TRADE, ESCAPED, PRISONERSWON, WARDENWON}
+public enum BattleState {START, WARDENSETUP, PLAYER1, PLAYER2, PLAYER3, PLAYER4, WARDEN, TRADE, ESCAPED, PRISONERSWON, WARDENWON}
 
 public class TurnSystem : MonoBehaviour
 {
+    public static int tokensLeft = 24;
+    public static bool tokensHidden = false;
     public static bool moved = false;
     public BattleState state;
 
@@ -34,12 +36,24 @@ public class TurnSystem : MonoBehaviour
     Unit unit4;
     Unit unitw;
 
+    GameObject[] dragScript;
+    public GameObject hideButton;
+    public GameObject hideInventory;
+
     public Text currentPlayer;
     public Text movesLeft;
 
     // Start is called before the first frame update
     void Start()
     {
+        hideButton = GameObject.Find("Hide Tokens Button");
+        hideButton.SetActive(false); //hide "hide" button
+
+        dragScript = GameObject.FindGameObjectsWithTag("Tokens");
+        foreach(GameObject script in dragScript) {
+            script.GetComponent<ItemDrag>().enabled = false;
+        }
+
         wardenCam.GetComponent<ActiveCam>().toggleOff();
         redCam.GetComponent<ActiveCam>().toggleOff();
         yellowCam.GetComponent<ActiveCam>().toggleOff();
@@ -72,12 +86,51 @@ public class TurnSystem : MonoBehaviour
         currentPlayer.text = "Current Player: " + unitw.playerName;
         movesLeft.text = "" + unit1.movesLeft;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
 
-        wardenCam.GetComponent<ActiveCam>().toggleCam();
+        //wardenCam.GetComponent<ActiveCam>().toggleCam();
         
         state = BattleState.PLAYER1;
+        StartCoroutine((wardenSetupTurn(unitw)));
+    }
+
+    IEnumerator wardenSetupTurn(Unit unit){
+        
+        currentPlayer.text = "Current Player: " + unitw.playerName;
+        wardenTokenCounter();
+
+        foreach(GameObject script in dragScript) {
+            script.GetComponent<ItemDrag>().enabled = true;
+        }
+
+        yield return new WaitUntil(() => TurnSystem.tokensLeft == 0);
+
+        movesLeft.text = "" + TurnSystem.tokensLeft;
+
+        if (TurnSystem.tokensLeft == 0) {
+            print("DONE PLACING TOKENS");
+            hideButton.SetActive(true);
+
+            foreach(GameObject script in dragScript) {
+                script.GetComponent<ItemDrag>().enabled = true;
+            }
+        }
+
+        yield return new WaitUntil(() => TurnSystem.tokensHidden == true);
+        yield return new WaitForSeconds(.5f);
+
+        hideInventory = GameObject.Find("Warden Inventory");
+        hideInventory.SetActive(false);
+        hideButton.SetActive(false);
+
+        yield return new WaitForSeconds(1f);
+
+        wardenCam.GetComponent<ActiveCam>().toggleCam();
         playerTurn1();
+    }
+
+    public void wardenTokenCounter() {
+        movesLeft.text = "" + TurnSystem.tokensLeft;
     }
 
     IEnumerator playerMove(Unit unit) {
@@ -181,5 +234,4 @@ public class TurnSystem : MonoBehaviour
             playerTurn1();
         }
     }
-
 }

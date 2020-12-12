@@ -43,7 +43,7 @@ public class Unit : MonoBehaviour
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
-                moving = true;
+                    moving = true;
                     var hitObject = hit.transform.gameObject.transform.position;
                     distance = Vector3.Distance(player.transform.position, hitObject);
 
