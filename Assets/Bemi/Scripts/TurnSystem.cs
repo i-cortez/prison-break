@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum BattleState {START, WARDENSETUP, PLAYER1, PLAYER2, PLAYER3, PLAYER4, WARDEN, TRADE, ESCAPED, PRISONERSWON, WARDENWON}
+   
 
 public class TurnSystem : MonoBehaviour
 {
@@ -36,6 +37,12 @@ public class TurnSystem : MonoBehaviour
     Unit unit4;
     Unit unitw;
 
+    GameObject playerGO1;
+    GameObject playerGO2;
+    GameObject playerGO3;
+    GameObject playerGO4;
+    GameObject playerGOw;
+
     GameObject[] dragScript;
     public GameObject hideButton;
     public GameObject hideInventory;
@@ -64,32 +71,39 @@ public class TurnSystem : MonoBehaviour
         StartCoroutine(setupRound());
     }
 
-    IEnumerator setupRound() {
-
+    IEnumerator setupRound()
+    {
+        // Activate the Warden's camera (birds eye view)
         wardenCam.GetComponent<ActiveCam>().toggleCam();
 
-        GameObject playerGO1 = Instantiate (p1, spawn1);
+        // Clones the object original and returns the clone
+        playerGO1 = Instantiate (p1, spawn1);
         unit1 = playerGO1.GetComponent<Unit>();
+        playerGO1.GetComponent<InventorySystem>().enabled = false;
 
-        GameObject playerGO2 = Instantiate (p2, spawn2);
+        // Clones the object original and returns the clone
+        playerGO2 = Instantiate(p2, spawn2);
         unit2 = playerGO2.GetComponent<Unit>();
-        
-        GameObject playerGO3 = Instantiate (p3, spawn3);
+        playerGO2.GetComponent<InventorySystem>().enabled = false;
+
+
+        playerGO3 = Instantiate (p3, spawn3);
         unit3 = playerGO3.GetComponent<Unit>();
+        playerGO3.GetComponent<InventorySystem>().enabled = false;
 
-        GameObject playerGO4 = Instantiate (p4, spawn4);
+        playerGO4 = Instantiate (p4, spawn4);
         unit4 = playerGO4.GetComponent<Unit>();
+        playerGO4.GetComponent<InventorySystem>().enabled = false;
 
-        GameObject playerGOw = Instantiate (w, spawnw);
+        playerGOw = Instantiate (w, spawnw);
         unitw = playerGOw.GetComponent<Unit>();
+        playerGO4.GetComponent<InventorySystem>().enabled = false;
 
-        currentPlayer.text = "Current Player: " + unitw.playerName;
-        movesLeft.text = "" + unit1.movesLeft;
+        currentPlayer.text = "Current Player: ";
+        movesLeft.text = "";
 
         yield return new WaitForSeconds(1f);
 
-        //wardenCam.GetComponent<ActiveCam>().toggleCam();
-        
         state = BattleState.PLAYER1;
         StartCoroutine((wardenSetupTurn(unitw)));
     }
@@ -154,51 +168,63 @@ public class TurnSystem : MonoBehaviour
         // playerTurn2();
         // Trade
         // check win condition
-        stateChange();
+        stateChange(unit);
     }
 
-    void playerTurn1() {
-
+    void playerTurn1()
+    {
+        // Activate the camera for player 1
         redCam.GetComponent<ActiveCam>().toggleCam();
 
         currentPlayer.text = "Current Player: " + unit1.playerName;
         movesLeft.text = "" + unit1.movesLeft;
 
+        // Enable the inventory for player 1
+        playerGO1.GetComponent<InventorySystem>().enabled = true;
         StartCoroutine(playerMove(unit1));
     }
 
-    void playerTurn2() {
-
+    void playerTurn2()
+    {
+        // Activate the camera for player 2
         yellowCam.GetComponent<ActiveCam>().toggleCam();
 
         currentPlayer.text = "Current Player: " + unit2.playerName;
         movesLeft.text = "" + unit2.movesLeft;
 
+        // Enable the inventory for player 2
+        playerGO2.GetComponent<InventorySystem>().enabled = true;
         StartCoroutine(playerMove(unit2));
     }
 
-    void playerTurn3() {
-
+    void playerTurn3()
+    {
+        // Activate the camera for player 3
         greenCam.GetComponent<ActiveCam>().toggleCam();
 
         currentPlayer.text = "Current Player: " + unit3.playerName;
         movesLeft.text = "" + unit3.movesLeft;
 
+        // Enable the inventory for player 3
+        playerGO3.GetComponent<InventorySystem>().enabled = true;
         StartCoroutine(playerMove(unit3));
     }
 
-    void playerTurn4() {
-
+    void playerTurn4()
+    {
+        // Activate the camera for player 4
         blueCam.GetComponent<ActiveCam>().toggleCam();
 
         currentPlayer.text = "Current Player: " + unit4.playerName;
         movesLeft.text = "" + unit4.movesLeft;
 
+        playerGO4.GetComponent<InventorySystem>().enabled = true;
         StartCoroutine(playerMove(unit4));
     }
 
-    void playerTurn5() {
-
+    void playerTurnWarden()
+    {
+        // Activate the camera for warden
         wardenCam.GetComponent<ActiveCam>().toggleCam();
 
         currentPlayer.text = "Current Player: " + unitw.playerName;
@@ -207,28 +233,48 @@ public class TurnSystem : MonoBehaviour
         StartCoroutine(playerMove(unitw));
     }
 
-    void stateChange() {
-        if (state == BattleState.PLAYER1) {
+    void stateChange(Unit myUnit)
+    {
+        // Reset the number of moves for the player
+        myUnit.movesLeft = 2;
+
+        if (state == BattleState.PLAYER1)
+        {
+            // Change the state from player 1 to player 2
             state = BattleState.PLAYER2;
             redCam.GetComponent<ActiveCam>().toggleCam();
+            playerGO1.GetComponent<InventorySystem>().enabled = false;
             playerTurn2();
-
-        }else if (state == BattleState.PLAYER2) {
+        }
+        else if (state == BattleState.PLAYER2)
+        {
+            // Change the state from player 2 to player 3
             state = BattleState.PLAYER3;
-            yellowCam.GetComponent<ActiveCam>().toggleCam(); 
+            yellowCam.GetComponent<ActiveCam>().toggleCam();
+            playerGO2.GetComponent<InventorySystem>().enabled = false;
             playerTurn3();
 
-        }else if (state == BattleState.PLAYER3) {
+        }
+        else if (state == BattleState.PLAYER3)
+        {
+            // Change the state from player 3 to player 4
             state = BattleState.PLAYER4;
             greenCam.GetComponent<ActiveCam>().toggleCam();
+            playerGO3.GetComponent<InventorySystem>().enabled = false;
             playerTurn4();
 
-        }else if (state == BattleState.PLAYER4) {
+        }
+        else if (state == BattleState.PLAYER4)
+        {
+            // Change the state from player 4 to warden
             state = BattleState.WARDEN;
             blueCam.GetComponent<ActiveCam>().toggleCam();
-            playerTurn5();
+            playerGO4.GetComponent<InventorySystem>().enabled = false;
+            playerTurnWarden();
 
-        }else if (state == BattleState.WARDEN) {
+        }
+        else if (state == BattleState.WARDEN)
+        {
             state = BattleState.PLAYER1;
             wardenCam.GetComponent<ActiveCam>().toggleCam();
             playerTurn1();

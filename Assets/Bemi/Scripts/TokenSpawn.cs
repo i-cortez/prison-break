@@ -51,6 +51,7 @@ public class TokenSpawn : MonoBehaviour
         taggedTokens = GameObject.FindGameObjectsWithTag("Tokens To Hide");
 
         foreach(GameObject token in taggedTokens) {
+            token.gameObject.tag = "Token";
             token.GetComponent<Renderer>().enabled = false;
         }
 

@@ -11,6 +11,11 @@ TagManager:
   - Green Token
   - Tokens
   - Tokens To Hide
+  - Prisoner 1
+  - Prisoner 2
+  - Prisoner 3
+  - Prisoner 4
+  - Token
   layers:
   - Default
   - TransparentFX
