@@ -6,6 +6,7 @@ public class ItemDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     TokenSpawn spawnScript;
     TurnSystem tokenCounter;
+    TurnSystem inv;
 
     public Image ghost;
     Vector3 originSave;
@@ -40,19 +41,31 @@ public class ItemDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
-            ghost.enabled = false;
             var hitObject = hit.transform.gameObject;
-            print("Dropped on " + hitObject.name);
-            TurnSystem.tokensLeft--;
-            tokenCounter.wardenTokenCounter();
+            if (hitObject.name != GameObject.FindWithTag("Player").name) { //CHANGE TAG TO PRISONERS
+                if (hitObject.tag == "Inventory") {
+                    inv.tokenTransfer();
+                }
+                ghost.enabled = false;
+                print("Dropped on " + hitObject.name);
+                TurnSystem.tokensLeft--;
+                tokenCounter.wardenTokenCounter();
 
-            spawnScript.spawnToken(ghost.name, hitObject);
-            
-
-        }else{
+                spawnScript.spawnToken(ghost.name, hitObject);
+            }else {
+                ghost.transform.position = originSave;
+            }
+        }else {
             ghost.transform.position = originSave;
         }
     }
+            // ghost.enabled = false;
+            // print("Dropped on " + hitObject.name);
+            // TurnSystem.tokensLeft--;
+            // tokenCounter.wardenTokenCounter();
+
+            // spawnScript.spawnToken(ghost.name, hitObject);
+
     
     // public void OnDrop(PointerEventData data)
     //     {

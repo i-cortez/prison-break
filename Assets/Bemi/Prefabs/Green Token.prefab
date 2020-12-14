@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3897846334294301943}
   - component: {fileID: 7832086029995819831}
   - component: {fileID: -2197138031501042972}
-  - component: {fileID: -7815729243828115821}
+  - component: {fileID: 3971270159359219800}
   m_Layer: 0
   m_Name: Green Token
   m_TagString: Tokens To Hide
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-7815729243828115821
+--- !u!114 &3971270159359219800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,8 +120,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7848810801123324125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c71d4acb5b0d64cb2346d52e0b4a51, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f8d1318053d6534babaf802c905dc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Green Token
-  itemPreview: {fileID: 2800000, guid: f47bc44a6e94b7a409484ae702919403, type: 3}

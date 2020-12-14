@@ -12,30 +12,37 @@ public class TurnSystem : MonoBehaviour
     public static bool tokensHidden = false;
     public static bool moved = false;
     public BattleState state;
-
+    [Space]
     public GameObject p1;
     public GameObject p2;
     public GameObject p3;
     public GameObject p4;
     public GameObject w;
-
+    [Space]
     public Transform spawn1;
     public Transform spawn2;
     public Transform spawn3;
     public Transform spawn4;
     public Transform spawnw;
-
+    [Space]
     public GameObject wardenCam;
     public GameObject redCam;
     public GameObject yellowCam;
     public GameObject greenCam;
     public GameObject blueCam;
+    [Space]
 
     Unit unit1;
     Unit unit2;
     Unit unit3;
     Unit unit4;
     Unit unitw;
+
+    Inventory inv1;
+    Inventory inv2;
+    Inventory inv3;
+    Inventory inv4;
+    Inventory invw;
 
     GameObject playerGO1;
     GameObject playerGO2;
@@ -44,6 +51,8 @@ public class TurnSystem : MonoBehaviour
     GameObject playerGOw;
 
     GameObject[] dragScript;
+
+    [Space]
     public GameObject hideButton;
     public GameObject hideInventory;
 
@@ -79,25 +88,31 @@ public class TurnSystem : MonoBehaviour
         // Clones the object original and returns the clone
         playerGO1 = Instantiate (p1, spawn1);
         unit1 = playerGO1.GetComponent<Unit>();
-        playerGO1.GetComponent<InventorySystem>().enabled = false;
+        inv1 = playerGO1.GetComponent<Inventory>();
+        //playerGO1.GetComponent<InventorySystem>().enabled = false;
+        // Transform temp = GameObject.Find("P1 Slot (1)").GetComponent<Transform>();
+        // Instantiate(redToken, temp);
 
         // Clones the object original and returns the clone
         playerGO2 = Instantiate(p2, spawn2);
         unit2 = playerGO2.GetComponent<Unit>();
-        playerGO2.GetComponent<InventorySystem>().enabled = false;
-
+        inv2 = playerGO2.GetComponent<Inventory>();
+        //playerGO2.GetComponent<InventorySystem>().enabled = false;
 
         playerGO3 = Instantiate (p3, spawn3);
         unit3 = playerGO3.GetComponent<Unit>();
-        playerGO3.GetComponent<InventorySystem>().enabled = false;
+        inv3 = playerGO3.GetComponent<Inventory>();
+        //playerGO3.GetComponent<InventorySystem>().enabled = false;
 
         playerGO4 = Instantiate (p4, spawn4);
         unit4 = playerGO4.GetComponent<Unit>();
-        playerGO4.GetComponent<InventorySystem>().enabled = false;
+        inv4 = playerGO4.GetComponent<Inventory>();
+        //playerGO4.GetComponent<InventorySystem>().enabled = false;
 
         playerGOw = Instantiate (w, spawnw);
         unitw = playerGOw.GetComponent<Unit>();
-        playerGO4.GetComponent<InventorySystem>().enabled = false;
+        invw = playerGO4.GetComponent<Inventory>();
+        //playerGO4.GetComponent<InventorySystem>().enabled = false;
 
         currentPlayer.text = "Current Player: ";
         movesLeft.text = "";
@@ -168,19 +183,33 @@ public class TurnSystem : MonoBehaviour
         // playerTurn2();
         // Trade
         // check win condition
+        StartCoroutine(tradeTurn(unit));
+    }
+
+    IEnumerator tradeTurn(Unit unit) {
+
+
+
+        yield return new WaitUntil(() => (Input.GetKeyDown("q")) == true);
+
         stateChange(unit);
+    }
+
+    public void tokenTransfer() {
+        
     }
 
     void playerTurn1()
     {
         // Activate the camera for player 1
         redCam.GetComponent<ActiveCam>().toggleCam();
+        inv1.invOn();
 
         currentPlayer.text = "Current Player: " + unit1.playerName;
         movesLeft.text = "" + unit1.movesLeft;
 
         // Enable the inventory for player 1
-        playerGO1.GetComponent<InventorySystem>().enabled = true;
+        //playerGO1.GetComponent<InventorySystem>().enabled = true;
         StartCoroutine(playerMove(unit1));
     }
 
@@ -188,12 +217,13 @@ public class TurnSystem : MonoBehaviour
     {
         // Activate the camera for player 2
         yellowCam.GetComponent<ActiveCam>().toggleCam();
+        inv2.invOn();
 
         currentPlayer.text = "Current Player: " + unit2.playerName;
         movesLeft.text = "" + unit2.movesLeft;
 
         // Enable the inventory for player 2
-        playerGO2.GetComponent<InventorySystem>().enabled = true;
+        //playerGO2.GetComponent<InventorySystem>().enabled = true;
         StartCoroutine(playerMove(unit2));
     }
 
@@ -201,12 +231,13 @@ public class TurnSystem : MonoBehaviour
     {
         // Activate the camera for player 3
         greenCam.GetComponent<ActiveCam>().toggleCam();
+        inv3.invOn();
 
         currentPlayer.text = "Current Player: " + unit3.playerName;
         movesLeft.text = "" + unit3.movesLeft;
 
         // Enable the inventory for player 3
-        playerGO3.GetComponent<InventorySystem>().enabled = true;
+        //playerGO3.GetComponent<InventorySystem>().enabled = true;
         StartCoroutine(playerMove(unit3));
     }
 
@@ -214,11 +245,12 @@ public class TurnSystem : MonoBehaviour
     {
         // Activate the camera for player 4
         blueCam.GetComponent<ActiveCam>().toggleCam();
+        inv4.invOn();
 
         currentPlayer.text = "Current Player: " + unit4.playerName;
         movesLeft.text = "" + unit4.movesLeft;
 
-        playerGO4.GetComponent<InventorySystem>().enabled = true;
+        //playerGO4.GetComponent<InventorySystem>().enabled = true;
         StartCoroutine(playerMove(unit4));
     }
 
@@ -243,7 +275,8 @@ public class TurnSystem : MonoBehaviour
             // Change the state from player 1 to player 2
             state = BattleState.PLAYER2;
             redCam.GetComponent<ActiveCam>().toggleCam();
-            playerGO1.GetComponent<InventorySystem>().enabled = false;
+            inv1.invOff();
+            //playerGO1.GetComponent<InventorySystem>().enabled = false;
             playerTurn2();
         }
         else if (state == BattleState.PLAYER2)
@@ -251,7 +284,8 @@ public class TurnSystem : MonoBehaviour
             // Change the state from player 2 to player 3
             state = BattleState.PLAYER3;
             yellowCam.GetComponent<ActiveCam>().toggleCam();
-            playerGO2.GetComponent<InventorySystem>().enabled = false;
+            inv2.invOff();
+            //playerGO2.GetComponent<InventorySystem>().enabled = false;
             playerTurn3();
 
         }
@@ -260,7 +294,8 @@ public class TurnSystem : MonoBehaviour
             // Change the state from player 3 to player 4
             state = BattleState.PLAYER4;
             greenCam.GetComponent<ActiveCam>().toggleCam();
-            playerGO3.GetComponent<InventorySystem>().enabled = false;
+            inv3.invOff();
+            //playerGO3.GetComponent<InventorySystem>().enabled = false;
             playerTurn4();
 
         }
@@ -269,7 +304,8 @@ public class TurnSystem : MonoBehaviour
             // Change the state from player 4 to warden
             state = BattleState.WARDEN;
             blueCam.GetComponent<ActiveCam>().toggleCam();
-            playerGO4.GetComponent<InventorySystem>().enabled = false;
+            inv4.invOff();
+            //playerGO4.GetComponent<InventorySystem>().enabled = false;
             playerTurnWarden();
 
         }

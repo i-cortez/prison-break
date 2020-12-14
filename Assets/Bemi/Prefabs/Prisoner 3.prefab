@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 447873128761553889}
   - component: {fileID: 447873128761553888}
   - component: {fileID: -239605609064404390}
-  - component: {fileID: 6111829543158813955}
-  - component: {fileID: -6354897715570380956}
+  - component: {fileID: 2236753306979399774}
   - component: {fileID: -892029173194500000}
   m_Layer: 0
   m_Name: Prisoner 3
@@ -137,7 +136,7 @@ MonoBehaviour:
   playerName: Prisoner 3
   movesLeft: 2
   traded: 0
---- !u!114 &6111829543158813955
+--- !u!114 &2236753306979399774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,28 +145,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 447873128761553901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef0c2eb340ba4514c9e9422ae4219fd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ecf37dfc580d9842aae4a742590521e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPlayer: {fileID: 447873128761553901}
---- !u!114 &-6354897715570380956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447873128761553901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34382f0c13527c74286fb7f5b4c31004, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPlayer: {fileID: 447873128761553901}
-  availableItems:
-  - {fileID: 4969676306330689216, guid: c32a89d08c9e166478592b886a626266, type: 3}
-  - {fileID: -7815729243828115821, guid: 6944dceca83e25c4d94d52ecc3cb1861, type: 3}
-  - {fileID: -7521536157857759210, guid: 4d838da806cfa584a99a9ac4e65cd8fe, type: 3}
-  - {fileID: 8843221331504015488, guid: ab9061ef8fe7e774e82d33674822ff17, type: 3}
+  player: {fileID: 447873128761553901}
+  inventoryPrefab: {fileID: 8622840842946239460, guid: d17609e0568e46f488c75786e0473094,
+    type: 3}
+  redIcon: {fileID: 2427752592785429695, guid: 66176a040cbe33b48a0036413ded8e1f, type: 3}
+  yellowIcon: {fileID: 2439545424376232167, guid: 6726d4075aea0784eaf5492cdaf6d02f,
+    type: 3}
+  greenIcon: {fileID: 4183610596444594568, guid: a8d94eab8441b4543858d878f01456a3,
+    type: 3}
+  blueIcon: {fileID: 4347164560667952773, guid: b6739db1002b1b0489addc4fedcbd9fb,
+    type: 3}
+  nextSlot: 0
+  availableSlots: 000000000000000000000000000000000000000000000000
+  tokenNames:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  slots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  toggle: 0
+  inventory: {fileID: 0}
 --- !u!54 &-892029173194500000
 Rigidbody:
   m_ObjectHideFlags: 0

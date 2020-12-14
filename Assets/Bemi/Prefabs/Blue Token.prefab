@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1821644208682760251}
   - component: {fileID: 5475541102540275900}
   - component: {fileID: 965093242412422671}
-  - component: {fileID: -7521536157857759210}
+  - component: {fileID: 8936902049470039894}
   m_Layer: 0
   m_Name: Blue Token
   m_TagString: Tokens To Hide
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-7521536157857759210
+--- !u!114 &8936902049470039894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,8 +120,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9176738503199988296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c71d4acb5b0d64cb2346d52e0b4a51, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f8d1318053d6534babaf802c905dc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Blue Token
-  itemPreview: {fileID: 2800000, guid: be62ecf8afce5044c8335424600ba0e6, type: 3}

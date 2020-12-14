@@ -13,7 +13,7 @@ public class AlertPlayerCollision : MonoBehaviour
         if(collisionObj.tag == "Token")
         {
             // Add the token to the players inventory
-            myPlayer.GetComponent<InventorySystem>().addItem(collisionObj.gameObject);
+            // myPlayer.GetComponent<InventorySystem>().addItem(collisionObj.gameObject);
         }
     }
 }

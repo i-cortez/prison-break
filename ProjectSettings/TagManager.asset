@@ -17,6 +17,7 @@ TagManager:
   - Prisoner 4
   - Token
   - Keister
+  - Inventory
   layers:
   - Default
   - TransparentFX
