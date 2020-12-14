@@ -286,10 +286,10 @@ Transform:
   m_LocalPosition: {x: -0.37, y: 0, z: 1.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1543903199}
-  - {fileID: 1087801035}
-  - {fileID: 1156884870}
   - {fileID: 1909657682}
+  - {fileID: 1156884870}
+  - {fileID: 1087801035}
+  - {fileID: 1543903199}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -911,7 +911,7 @@ GameObject:
   - component: {fileID: 72260341}
   m_Layer: 5
   m_Name: Yellow Token
-  m_TagString: Tokens
+  m_TagString: Yellow Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2652,7 +2652,7 @@ GameObject:
   - component: {fileID: 263350609}
   m_Layer: 5
   m_Name: Yellow Token
-  m_TagString: Tokens
+  m_TagString: Yellow Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2784,7 +2784,7 @@ GameObject:
   - component: {fileID: 266194342}
   m_Layer: 5
   m_Name: Green Token
-  m_TagString: Tokens
+  m_TagString: Green Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3763,7 +3763,7 @@ GameObject:
   - component: {fileID: 358156807}
   m_Layer: 5
   m_Name: Blue Token
-  m_TagString: Tokens
+  m_TagString: Blue Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4041,7 +4041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 2341, y: 0}
+  m_AnchoredPosition: {x: 2107, y: 0}
   m_SizeDelta: {x: 350, y: 794.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &372952354
@@ -7813,7 +7813,7 @@ GameObject:
   - component: {fileID: 771461362}
   m_Layer: 5
   m_Name: Yellow Token
-  m_TagString: Tokens
+  m_TagString: Yellow Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9800,7 +9800,7 @@ GameObject:
   - component: {fileID: 885297597}
   m_Layer: 5
   m_Name: Blue Token
-  m_TagString: Tokens
+  m_TagString: Blue Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10023,7 +10023,7 @@ GameObject:
   - component: {fileID: 906321501}
   m_Layer: 5
   m_Name: Green Token
-  m_TagString: Tokens
+  m_TagString: Green Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11763,7 +11763,7 @@ GameObject:
   - component: {fileID: 1061507530}
   m_Layer: 5
   m_Name: Green Token
-  m_TagString: Tokens
+  m_TagString: Green Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12242,8 +12242,9 @@ GameObject:
   - component: {fileID: 1087801038}
   - component: {fileID: 1087801037}
   - component: {fileID: 1087801036}
+  - component: {fileID: 1087801039}
   m_Layer: 0
-  m_Name: Cube 2
+  m_Name: Cube 3
   m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12261,7 +12262,7 @@ Transform:
   m_LocalScale: {x: 5, y: 0.5, z: 2}
   m_Children: []
   m_Father: {fileID: 4855913}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1087801036
 BoxCollider:
@@ -12323,6 +12324,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087801034}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1087801039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087801034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee26c0b342507034593584f2e7701d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 447873128761553901, guid: a90848663498f1240b58d2f599046be6, type: 3}
 --- !u!1 &1091120361
 GameObject:
   m_ObjectHideFlags: 0
@@ -13193,8 +13207,9 @@ GameObject:
   - component: {fileID: 1156884873}
   - component: {fileID: 1156884872}
   - component: {fileID: 1156884871}
+  - component: {fileID: 1156884874}
   m_Layer: 0
-  m_Name: Cube 3
+  m_Name: Cube 2
   m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13212,7 +13227,7 @@ Transform:
   m_LocalScale: {x: 5, y: 0.5, z: 2}
   m_Children: []
   m_Father: {fileID: 4855913}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1156884871
 BoxCollider:
@@ -13274,6 +13289,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156884869}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1156884874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156884869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee26c0b342507034593584f2e7701d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5061999987214355139, guid: a3129e4b2519b9a41a1383d794445ae6, type: 3}
 --- !u!1 &1160556204
 GameObject:
   m_ObjectHideFlags: 0
@@ -13472,7 +13500,7 @@ GameObject:
   - component: {fileID: 1184082221}
   m_Layer: 5
   m_Name: Red Token
-  m_TagString: Tokens
+  m_TagString: Red Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15567,7 +15595,7 @@ GameObject:
   - component: {fileID: 1360581606}
   m_Layer: 5
   m_Name: Blue Token
-  m_TagString: Tokens
+  m_TagString: Blue Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16157,7 +16185,7 @@ GameObject:
   - component: {fileID: 1411928085}
   m_Layer: 5
   m_Name: Red Token
-  m_TagString: Tokens
+  m_TagString: Red Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16309,7 +16337,7 @@ GameObject:
   - component: {fileID: 1423010630}
   m_Layer: 5
   m_Name: Blue Token
-  m_TagString: Tokens
+  m_TagString: Blue Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17105,7 +17133,7 @@ GameObject:
   - component: {fileID: 1480521167}
   m_Layer: 5
   m_Name: Blue Token
-  m_TagString: Tokens
+  m_TagString: Blue Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17620,8 +17648,9 @@ GameObject:
   - component: {fileID: 1543903198}
   - component: {fileID: 1543903197}
   - component: {fileID: 1543903196}
+  - component: {fileID: 1543903200}
   m_Layer: 0
-  m_Name: Cube 1
+  m_Name: Cube 4
   m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17699,8 +17728,21 @@ Transform:
   m_LocalScale: {x: 5, y: 0.5, z: 2}
   m_Children: []
   m_Father: {fileID: 4855913}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1543903200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543903195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee26c0b342507034593584f2e7701d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5803359554925203932, guid: bfd2f56ab018fc7498919206afff92cc, type: 3}
 --- !u!1 &1544221537
 GameObject:
   m_ObjectHideFlags: 0
@@ -18085,7 +18127,7 @@ GameObject:
   - component: {fileID: 1591813949}
   m_Layer: 5
   m_Name: Red Token
-  m_TagString: Tokens
+  m_TagString: Red Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18985,7 +19027,7 @@ GameObject:
   - component: {fileID: 1668733473}
   m_Layer: 5
   m_Name: Red Token
-  m_TagString: Tokens
+  m_TagString: Red Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19247,7 +19289,7 @@ GameObject:
   - component: {fileID: 1676188553}
   m_Layer: 5
   m_Name: Red Token
-  m_TagString: Tokens
+  m_TagString: Red Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20768,7 +20810,7 @@ GameObject:
   - component: {fileID: 1852761054}
   m_Layer: 5
   m_Name: Red Token
-  m_TagString: Tokens
+  m_TagString: Red Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21435,7 +21477,7 @@ GameObject:
   - component: {fileID: 1888348305}
   m_Layer: 5
   m_Name: Green Token
-  m_TagString: Tokens
+  m_TagString: Green Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21923,8 +21965,9 @@ GameObject:
   - component: {fileID: 1909657685}
   - component: {fileID: 1909657684}
   - component: {fileID: 1909657683}
+  - component: {fileID: 1909657686}
   m_Layer: 0
-  m_Name: Cube 4
+  m_Name: Cube 1
   m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21942,7 +21985,7 @@ Transform:
   m_LocalScale: {x: 5, y: 0.5, z: 2}
   m_Children: []
   m_Father: {fileID: 4855913}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1909657683
 BoxCollider:
@@ -22004,6 +22047,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909657681}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1909657686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909657681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee26c0b342507034593584f2e7701d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4348205506227735030, guid: de62b17e7f7e1464097ad4c5b01ce8dd, type: 3}
 --- !u!1 &1917723514
 GameObject:
   m_ObjectHideFlags: 0
@@ -22019,7 +22075,7 @@ GameObject:
   - component: {fileID: 1917723519}
   m_Layer: 5
   m_Name: Yellow Token
-  m_TagString: Tokens
+  m_TagString: Yellow Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22555,7 +22611,7 @@ GameObject:
   - component: {fileID: 1984031881}
   m_Layer: 5
   m_Name: Yellow Token
-  m_TagString: Tokens
+  m_TagString: Yellow Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22687,7 +22743,7 @@ GameObject:
   - component: {fileID: 1985502977}
   m_Layer: 5
   m_Name: Yellow Token
-  m_TagString: Tokens
+  m_TagString: Yellow Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22962,6 +23018,7 @@ GameObject:
   - component: {fileID: 1992862787}
   - component: {fileID: 1992862786}
   - component: {fileID: 1992862788}
+  - component: {fileID: 1992862789}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -23035,6 +23092,18 @@ MonoBehaviour:
     type: 3}
   blueToken: {fileID: 9176738503199988296, guid: 4d838da806cfa584a99a9ac4e65cd8fe,
     type: 3}
+--- !u!114 &1992862789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992862785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12b563be02e06141a88e2a00ed01a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2003871196
 GameObject:
   m_ObjectHideFlags: 0
@@ -23254,7 +23323,7 @@ GameObject:
   - component: {fileID: 2020335372}
   m_Layer: 5
   m_Name: Blue Token
-  m_TagString: Tokens
+  m_TagString: Blue Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24027,7 +24096,7 @@ GameObject:
   - component: {fileID: 2079267996}
   m_Layer: 5
   m_Name: Green Token
-  m_TagString: Tokens
+  m_TagString: Green Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24469,7 +24538,7 @@ GameObject:
   - component: {fileID: 2142033425}
   m_Layer: 5
   m_Name: Green Token
-  m_TagString: Tokens
+  m_TagString: Green Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

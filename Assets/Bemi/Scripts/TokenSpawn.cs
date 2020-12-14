@@ -14,12 +14,13 @@ public class TokenSpawn : MonoBehaviour
     public void spawnToken(string color, GameObject pos){
 
         // GameObject tempToken;
-
+        print("Function call passed");
         switch (color) {
             case "Red Token":
                 // tempToken = redToken;
                 // tempToken.gameObject.tag = "Tokens To Hide";
                 redToken.gameObject.tag = "Tokens To Hide";
+                print("Check");
                 Instantiate (redToken, pos.transform);
                 break;
 

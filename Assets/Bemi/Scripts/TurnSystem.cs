@@ -11,6 +11,7 @@ public class TurnSystem : MonoBehaviour
     public static int tokensLeft = 24;
     public static bool tokensHidden = false;
     public static bool moved = false;
+    public static bool trade = false;
     public BattleState state;
     [Space]
     public GameObject p1;
@@ -188,15 +189,39 @@ public class TurnSystem : MonoBehaviour
 
     IEnumerator tradeTurn(Unit unit) {
 
+        TurnSystem.trade = true;
 
 
         yield return new WaitUntil(() => (Input.GetKeyDown("q")) == true);
 
+        TurnSystem.trade = false;
         stateChange(unit);
     }
 
-    public void tokenTransfer() {
+    public void tokenTransfer(GameObject cube) {
         
+        // PickUp cubeCode = cube.GetComponent<PickUp>();
+        // switch (cube.name) {
+        //     //SUBTRACT FROM PREVIOUS OWNER
+        //     case "Cube 1":
+        //         cubeCode.spawnIcon(inv1, "Prisoner 1");
+        //         break;
+            
+        //     case "Cube 2":
+        //         cubeCode.spawnIcon(inv1, "Prisoner 2");
+        //         break;
+
+        //     case "Cube 3":
+        //         cubeCode.spawnIcon(inv1, "Prisoner 3");
+        //         break;
+
+        //     case "Cube 4":
+        //         cubeCode.spawnIcon(inv1, "Prisoner 4");
+        //         break;
+
+        //     default:
+        //         break;
+        // }
     }
 
     void playerTurn1()

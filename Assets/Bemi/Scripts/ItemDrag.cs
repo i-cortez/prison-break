@@ -6,7 +6,7 @@ public class ItemDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     TokenSpawn spawnScript;
     TurnSystem tokenCounter;
-    TurnSystem inv;
+    Trade trade;
 
     public Image ghost;
     Vector3 originSave;
@@ -40,23 +40,37 @@ public class ItemDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+        if (TurnSystem.trade == false) {
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
             var hitObject = hit.transform.gameObject;
-            if (hitObject.name != GameObject.FindWithTag("Player").name) { //CHANGE TAG TO PRISONERS
-                if (hitObject.tag == "Inventory") {
-                    inv.tokenTransfer();
-                }
-                ghost.enabled = false;
-                print("Dropped on " + hitObject.name);
-                TurnSystem.tokensLeft--;
-                tokenCounter.wardenTokenCounter();
+                if (hitObject.name != GameObject.FindWithTag("Player").name) { //CHANGE TAG TO PRISONERS
+                    ghost.enabled = false;
+                    print("Dropped on " + hitObject.name);
+                    TurnSystem.tokensLeft--;
+                    tokenCounter.wardenTokenCounter();
 
-                spawnScript.spawnToken(ghost.name, hitObject);
+                    spawnScript.spawnToken(ghost.tag, hitObject);
+                }else {
+                    ghost.transform.position = originSave;
+                }
             }else {
                 ghost.transform.position = originSave;
             }
-        }else {
-            ghost.transform.position = originSave;
+        }
+
+        if (TurnSystem.trade == true) {
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
+                var hitObject2 = hit.transform.gameObject;
+                if (hitObject2.tag == "Inventory") {
+                    ghost.enabled = false;
+                    print("Object Spawn Called");
+                    spawnScript.spawnToken(ghost.tag, hitObject2);
+                }else {
+                    ghost.transform.position = originSave;
+                }
+            }else {
+                ghost.transform.position = originSave;
+            }
         }
     }
             // ghost.enabled = false;
@@ -78,4 +92,4 @@ public class ItemDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     //             print("Dropped on " + hitObject.name);
     //         }
     //     }
-    }
+}

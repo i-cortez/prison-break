@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4347164560667952769}
   - component: {fileID: 4347164560667952770}
   m_Layer: 5
-  m_Name: Blue Token Icon
-  m_TagString: Tokens
+  m_Name: Blue Icon
+  m_TagString: Blue Token
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

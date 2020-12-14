@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class InvBox : MonoBehaviour
 {
-    
+    public GameObject player;
 }
