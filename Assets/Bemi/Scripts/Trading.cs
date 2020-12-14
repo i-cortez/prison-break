@@ -1,59 +1,42 @@
-﻿// InventorySystem.cs
-//
-// Ismael Cortez
-// 12-10-2020
-// Simple Inventory System
-//
-// Adapted from Sharp Coder:
-// https://sharpcoderblog.com/blog/unity-3d-coding-a-simple-inventory-system-with-ui-drag-and-drop
-//
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventorySystem : MonoBehaviour
+public class Trading : MonoBehaviour
 {
-    public GameObject myPlayer;
-    
     // List with Prefabs of all the available items
     public PickItem[] availableItems;
-    
+
     // Available items slots
     int[] itemSlots = new int[12];
-    bool showInventory = false;
+    bool showTrading = false;
     float windowAnimation = 1;
     float animationTimer = 0;
-    
+
     // UI Drag & Drop variables
     // (-1) represents an invalid index
     int hoveringOverIndex = -1;
     int itemIndexToDrag = -1;
     Vector2 dragOffset = Vector2.zero;
-    
-    // Item pick up variables
-    PickItem detectedItem;
-    int detectedItemIndex;
-    
-    // Start is called before the first frame update.
-    
+
+    // Start is called before the first frame update
     void Start()
     {
         // Initialize the Item Slots
-        for(int i = 0; i < itemSlots.Length; ++i)
+        for (int i = 0; i < itemSlots.Length; ++i)
         {
             // Here -1 represents an empty slot
             itemSlots[i] = -1;
         }
     }
 
-    // Update is called once per frame.
+    // Update is called once per frame
     void Update()
     {
-        // Show or Hide inventory UI by pressing the 'I' key
-        if (Input.GetKeyDown(KeyCode.I))
+        // Show or Hide Trading UI by pressing the 'T' key
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            showInventory = !showInventory;
+            showTrading = !showTrading;
             animationTimer = 0;
         }
 
@@ -62,7 +45,7 @@ public class InventorySystem : MonoBehaviour
             animationTimer += Time.deltaTime;
         }
 
-        if (showInventory)
+        if (showTrading)
         {
             // Open the inventory menu and freeze movement
             windowAnimation = Mathf.Lerp(windowAnimation, 0, animationTimer);
@@ -103,160 +86,113 @@ public class InventorySystem : MonoBehaviour
             itemIndexToDrag = -1;
         }
     }
-    
-    public void addItem(GameObject newItem)
-    {
-        // After a player has collided with a token this function is called to add the item to the inventory.
-        // The first thing we do is check if this item is in the availableItems array.
-        // If the item is in the availableItems array we then want to find an empty slot for it.
-        // If we find an empty slot we add the item to the inventory.
-        // Else we tell the player that the inventory is full in the console.
 
-        Debug.Log("Now adding a " + newItem.GetComponent<PickItem>().itemName);
-
-        // Loop through the availableItems array to check for our item
-        PickItem itemTmp = newItem.GetComponent<PickItem>();
-        for(int i = 0; i < availableItems.Length; ++i)
-        {
-            if(availableItems[i].itemName == itemTmp.itemName)
-            {
-                detectedItem = itemTmp;
-                detectedItemIndex = i;
-            }
-        }
-
-        if (detectedItem && detectedItemIndex > -1)
-        {
-            // Add the item to inventory in first empty slot found
-            int slotToAddTo = -1;
-            for (int i = 0; i < itemSlots.Length; ++i)
-            {
-                if (itemSlots[i] == -1)
-                {
-                    slotToAddTo = i;
-                    break;
-                }
-            }
-            
-            if (slotToAddTo > -1)
-            {
-                // Add the item to the inventory when empty slot is found
-                itemSlots[slotToAddTo] = detectedItemIndex;
-                detectedItem.PickItemUp();
-            }
-            
-            else
-            {
-                Debug.Log("Inventory is full!");
-            }
-        }
-
-        // reset for next call
-        detectedItem = null;
-    }
-    
     void OnGUI()
     {
-        // Inventory UI
-        GUI.Label(new Rect(5, 5, 200, 25), "Press 'I' to open Inventory");
-        
-        // Draw the inventory window
-        if(windowAnimation < 1)
+        // Keister UI message
+        GUI.Label(new Rect(5, 55, 200, 25), "Press 'T' to open Trading");
+
+        // Draw the Trading window
+        if (windowAnimation < 1)
         {
-            GUILayout.BeginArea(new Rect(Screen.width / 4 - 200, 10 - (440 * windowAnimation), 302, 430), GUI.skin.GetStyle("box"));
-            GUILayout.Label(myPlayer.tag + " Inventory", GUILayout.Height(25));
-            
+            GUILayout.BeginArea(new Rect(3 * Screen.width / 4 - 100, 10 - (510 * windowAnimation), 302, 500), GUI.skin.GetStyle("box"));
+            GUILayout.Label("Trading", GUILayout.Height(25));
+
             // Begin a vertical control group.
-            // All controls rendered inside this element will be placed vertically below each other.
-            
+            // All controls rendered inside this element will be placed vertically below each other
             GUILayout.BeginVertical();
-            
-            for(int i = 0; i < itemSlots.Length; i += 3)
+            for (int i = 0; i < itemSlots.Length; i += 3)
             {
-                // Begin a horizontal control group.
-                // All controls rendered inside this element will be placed horizontally next to each other.
-                
+                // Begin a horizontal control group
+                // All controls rendered inside this element will be placed horizontally next to each other
                 GUILayout.BeginHorizontal();
-                
-                // Display 3 items in a row
-                for(int j = 0; j < 3; ++j)
+
+                // For the Trading display 3 items in a row
+                for (int j = 0; j < 3; ++j)
                 {
-                    if(i + j < itemSlots.Length)
+                    if (i + j < itemSlots.Length)
                     {
-                        if(itemIndexToDrag == i + j || (itemIndexToDrag > -1 && hoveringOverIndex == i + j))
+                        if (itemIndexToDrag == i + j || (itemIndexToDrag > -1 && hoveringOverIndex == i + j))
                         {
+                            // All controls will be draw semi-transparently, and will not respond to user input
                             GUI.enabled = false;
                         }
-                        
-                        if(itemSlots[i + j] > -1)
+
+                        if (itemSlots[i + j] > -1)
                         {
-                            if(availableItems[itemSlots[i + j]].itemPreview)
+                            if (availableItems[itemSlots[i + j]].itemPreview)
                             {
                                 // Show the texture
                                 GUILayout.Box(availableItems[itemSlots[i + j]].itemPreview, GUILayout.Width(95), GUILayout.Height(95));
                             }
-                            
+
                             else
                             {
                                 // Show the item name if no texture is available
                                 GUILayout.Box(availableItems[itemSlots[i + j]].itemName, GUILayout.Width(95), GUILayout.Height(95));
                             }
                         }
-                        
+
                         else
                         {
                             // Empty slot
                             GUILayout.Box("", GUILayout.Width(95), GUILayout.Height(95));
                         }
-                        
-                        // Detect if the mouse cursor is hovering over item
+
+                        // Detect if the mouse cursor is hovering over an item
                         Rect lastRect = GUILayoutUtility.GetLastRect();
                         Vector2 eventMousePosition = Event.current.mousePosition;
-                        if(Event.current.type == EventType.Repaint && lastRect.Contains(eventMousePosition))
+                        if (Event.current.type == EventType.Repaint && lastRect.Contains(eventMousePosition))
                         {
                             hoveringOverIndex = i + j;
-                            if(itemIndexToDrag < 0)
+                            if (itemIndexToDrag < 0)
                             {
                                 dragOffset = new Vector2(lastRect.x - eventMousePosition.x, lastRect.y - eventMousePosition.y);
                             }
                         }
-                        
+
                         GUI.enabled = true;
                     }
                 }
-                
+
                 GUILayout.EndHorizontal();
             }
-            
+
+            // Here are the buttons used to cycle through the players available to the trading menu
+            GUILayout.BeginHorizontal();
+            GUILayout.Button("Previous");
+            GUILayout.Button("Next");
+            GUILayout.EndHorizontal();
+            GUILayout.Label("Player X", GUILayout.Height(25));
             GUILayout.EndVertical();
-            
-            if(Event.current.type == EventType.Repaint && !GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition))
+
+            if (Event.current.type == EventType.Repaint && !GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition))
             {
                 hoveringOverIndex = -1;
             }
+
             GUILayout.EndArea();
         }
-        
-        // Item dragging
-        if(itemIndexToDrag > -1)
+
+        if (itemIndexToDrag > -1)
         {
-            if(availableItems[itemSlots[itemIndexToDrag]].itemPreview)
+            if (availableItems[itemSlots[itemIndexToDrag]].itemPreview)
             {
                 // Show the image
                 GUI.Box(new Rect(Input.mousePosition.x + dragOffset.x, Screen.height - Input.mousePosition.y + dragOffset.y, 95, 95), availableItems[itemSlots[itemIndexToDrag]].itemPreview);
             }
-            
+
             else
             {
                 // Show the text
                 GUI.Box(new Rect(Input.mousePosition.x + dragOffset.x, Screen.height - Input.mousePosition.y + dragOffset.y, 95, 95), availableItems[itemSlots[itemIndexToDrag]].itemName);
             }
         }
-        
-        if(hoveringOverIndex > -1 && itemSlots[hoveringOverIndex] > -1 && itemIndexToDrag < 0)
+
+        if (hoveringOverIndex > -1 && itemSlots[hoveringOverIndex] > -1 && itemIndexToDrag < 0)
         {
+            // Show a tooltip to the user
             GUI.Box(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y - 30, 100, 25), availableItems[itemSlots[hoveringOverIndex]].itemName);
         }
     }
 }
-
