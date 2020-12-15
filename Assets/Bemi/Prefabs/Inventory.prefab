@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6254430962400158105}
   - component: {fileID: 5408063289941734737}
   - component: {fileID: 3359095435405198035}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Slot (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 8794607836206998438}
   - component: {fileID: 1592632777830200051}
   - component: {fileID: 8492235798017462856}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Slot (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 7320588485304462574}
   - component: {fileID: 2245305481397729402}
   - component: {fileID: 1885320466216259134}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Slot (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,8 +234,8 @@ GameObject:
   - component: {fileID: 8622840842946239464}
   - component: {fileID: 8622840842946239465}
   - component: {fileID: 8622840842946239466}
-  m_Layer: 5
-  m_Name: Inventory 1
+  m_Layer: 10
+  m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +250,7 @@ RectTransform:
   m_GameObject: {fileID: 8622840842946239460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.32, z: 1}
+  m_LocalScale: {x: 0.124344006, y: 0.1989504, z: 0.62172}
   m_Children:
   - {fileID: 8622840843343678236}
   - {fileID: 6530548660069210469}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 8622840843343678236}
   - component: {fileID: 8622840843343678210}
   - component: {fileID: 8622840843343678211}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Slot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 6530548660069210469}
   - component: {fileID: 4051586928816628593}
   - component: {fileID: 658776564681284491}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Slot (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 1915944169417017011}
   - component: {fileID: 2222230095576896117}
   - component: {fileID: 211410122198908706}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Slot (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

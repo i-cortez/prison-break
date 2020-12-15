@@ -40,7 +40,7 @@ public class ItemDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
         RaycastHit hit;
 
-        if (TurnSystem.trade == false) {
+        if (TurnSystem.trade == true) {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
             var hitObject = hit.transform.gameObject;
                 if (hitObject.name != GameObject.FindWithTag("Player").name) { //CHANGE TAG TO PRISONERS
@@ -58,19 +58,19 @@ public class ItemDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             }
         }
 
-        if (TurnSystem.trade == true) {
+        if (TurnSystem.trade == false) {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity)) {
                 var hitObject2 = hit.transform.gameObject;
                 if (hitObject2.tag == "Inventory") {
-                    ghost.enabled = false;
-                    print("Object Spawn Called");
-                    spawnScript.spawnToken(ghost.tag, hitObject2);
-                }else {
-                    ghost.transform.position = originSave;
-                }
-            }else {
-                ghost.transform.position = originSave;
-            }
+                    //ghost.enabled = false;
+                    //("Object Spawn Called");
+                    //spawnScript.spawnToken(ghost.tag, hitObject2);
+                }//else {
+                   // ghost.transform.position = originSave;
+                //}
+            }//else {
+                //ghost.transform.position = originSave;
+            //}
         }
     }
             // ghost.enabled = false;

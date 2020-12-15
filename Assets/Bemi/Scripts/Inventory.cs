@@ -98,19 +98,19 @@ public class Inventory : MonoBehaviour
         switch (player.name) {
             
             case "Prisoner 1(Clone)":
-                inv.GetComponent<RectTransform>().anchoredPosition = new Vector3(295f, 330f, 0f);
+                inv.GetComponent<RectTransform>().anchoredPosition = new Vector3(270f, 330f, 0f);
                 break;
             
             case "Prisoner 2(Clone)":
-                inv.GetComponent<RectTransform>().anchoredPosition = new Vector3(295f, -330f, 0f);
+                inv.GetComponent<RectTransform>().anchoredPosition = new Vector3(270f, -330f, 0f);
                 break;
 
             case "Prisoner 3(Clone)":
-                inv.GetComponent<RectTransform>().anchoredPosition = new Vector3(2250f, 330f, 0f);
+                inv.GetComponent<RectTransform>().anchoredPosition = new Vector3(1950f, 330f, 0f);
                 break;
 
             case "Prisoner 4(Clone)":
-                inv.GetComponent<RectTransform>().anchoredPosition = new Vector3(2250f, -330f, 0f);
+                inv.GetComponent<RectTransform>().anchoredPosition = new Vector3(1950f, -330f, 0f);
                 break;
             
             default:
@@ -118,13 +118,13 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void invOn() {
-        inventory.SetActive(true);
-    }
+    // public void invOn() {
+    //     inventory.SetActive(true);
+    // }
 
-    public void invOff() {
-        inventory.SetActive(false);
-    }
+    // public void invOff() {
+    //     inventory.SetActive(false);
+    // }
 
     void Update() {
         if (Input.GetKeyDown("i")){
@@ -132,5 +132,4 @@ public class Inventory : MonoBehaviour
             inventory.SetActive(toggle);
         }
     }
-
 }
